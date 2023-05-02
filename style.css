@@ -4,14 +4,38 @@
     box-sizing: border-box;
 }
 
+:root {
+    --color-one: #8294C4;
+    --color-two: #ACB1D6;
+    --color-three: #DBDFEA;
+    --color-four: #FFEAD2;
+
+}
+
 body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    background-color: var(--color-one);
+}
+
+@media (max-width: 500px) {
+    body {
+        min-height: 100%;
+        margin-top: 20px;
+    }
 }
 
 .main {
-    width: 500px;
-    height: 500px;
+    border-radius: 15px;
+    padding: 20px;
+    background-color: var(--color-two);
+}
+
+.main div {
+    background-color: var(--color-four);
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
 }
