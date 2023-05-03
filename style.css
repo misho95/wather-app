@@ -24,14 +24,14 @@ body {
     min-height: 500px;
 }
 
-header {
+.top-header {
     background: rgba(255, 255, 255, 0.19);
     padding: 30px;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
 }
 
-section {
+.content {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -43,13 +43,13 @@ section {
 .weather-box {
     min-width: 320px;
     min-height: 400px;
-    background: #000000;
-    opacity: 0.2;
+    background: rgba(0, 0, 0, 0.26);
     backdrop-filter: blur(16px);
     border-radius: 48px;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .weather-box h3 {
@@ -68,4 +68,61 @@ section {
     justify-content: center;
     align-items: center;
     border: none;
+}
+
+.weather-header {
+    width: 100%;
+    height: 60px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 20% 80%;
+}
+
+.wh-left {
+    width: 100%;
+    height: 60px;
+}
+
+.wh-left img {
+    height: 60px;
+}
+
+.wh-right {
+    color: #ffffff;
+}
+
+.wh-right div:first-child {
+    font-size: 18px;
+}
+
+.wh-right div:last-child {
+    font-size: 15px;
+}
+
+.weather-section {
+    padding: 50px;
+    font-size: 20px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.weather-section h1 {
+    font-size: 70px;
+}
+
+.weather-footer {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(2, auto);
+    color: #ffffff;
+}
+
+.weather-box div {
+    padding: 0 20px;
+    margin: 10px 0;
+}
+
+.weather-footer div:first-child,div:nth-child(3){
+    border-right: 1px solid #ffffff;
 }
