@@ -5,37 +5,67 @@
 }
 
 :root {
-    --color-one: #8294C4;
-    --color-two: #ACB1D6;
-    --color-three: #DBDFEA;
-    --color-four: #FFEAD2;
-
+    --color-one: #462686;
+    --color-two:#A4A4FF;
 }
 
 body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #E5E5E5;
     min-height: 100vh;
-    background-color: var(--color-one);
-}
-
-@media (max-width: 500px) {
-    body {
-        min-height: 100%;
-        margin-top: 20px;
-    }
 }
 
 .main {
-    border-radius: 15px;
-    padding: 20px;
-    background-color: var(--color-two);
+    width: 80%;
+    background-image: radial-gradient(var(--color-one), var(--color-two));
+    border-radius: 30px;
+    min-height: 500px;
 }
 
-.main div {
-    background-color: var(--color-four);
-    margin: 5px;
-    padding: 5px;
-    border-radius: 5px;
+header {
+    background: rgba(255, 255, 255, 0.19);
+    padding: 30px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.weather-box {
+    min-width: 320px;
+    min-height: 400px;
+    background: #000000;
+    opacity: 0.2;
+    backdrop-filter: blur(16px);
+    border-radius: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.weather-box h3 {
+    margin-top: 10px;
+    color: #ffffff;
+}
+
+.circale {
+    background: rgba(255, 255, 255, 0.26);
+    border-radius: 50%;
+    padding: 25px 42px;
+    font-size: 50px;
+    color: #ffffff;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
 }
