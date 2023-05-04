@@ -1,5 +1,5 @@
 
-const addNewWeather = (temp, feelsLike, humi, windSpeed, visi, wether, city) => {
+const addNewWeather = (temp, feelsLike, humi, windSpeed, visi, wether, city, id) => {
 
     const d = new Date();
 
@@ -16,9 +16,6 @@ const addNewWeather = (temp, feelsLike, humi, windSpeed, visi, wether, city) => 
     } else if (wether === `Clouds`){
          icon = `<img src="./icons/cloudy.png" />`;
     }
-
-    const id = Math.round(Math.random() * 100000);
-
 
     const div = `
     <div class="weather-box">
@@ -54,19 +51,39 @@ const addNewWeather = (temp, feelsLike, humi, windSpeed, visi, wether, city) => 
 
     $(`.add-weather`).before(div);
 
-    $(`.btn${id}`).click( (event) => {
-        $(`.modal${id}`).toggle();
-        const parent = event.currentTarget.parentElement;
-        $(`.remove-box`).click( () => {
-            parent.remove();
-        })
-       
-    });
+
+        $(`.btn${id}`).click( (event) => {
+            $(`.modal${id}`).toggle();
+            const parent = event.currentTarget.parentElement;
+            $(`.remove-box`).click( () => {
+
+                let data = localStorage.getItem(`weather-list`);
+                data = JSON.parse(data);
+                function checkID(e){
+                        return e.id === id;
+                    }
+                    const index = data.findIndex(checkID);
+                const newData = data.filter( (e) => {
+                    if(e.id !== data[index].id){
+                        return e;
+                    };
+                });
+
+
+                localStorage.setItem(`weather-list`, JSON.stringify(newData));
+                parent.remove();
+
+                location.reload();
+
+            })
+        });
+
+  
     
 };
 
 
-const getWeather = async (lon, lat, city) => {
+const getWeather = async (lon, lat, city, id) => {
     const APIkey = `b48f8d17db2c7e8becb6cc27a2e1c362`;
     const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIkey}`;
     const respons = await fetch (url);
@@ -77,17 +94,17 @@ const getWeather = async (lon, lat, city) => {
     const windSpeed = result.wind.speed;
     const visi = result.visibility;
     const wether = result.weather[0].main;
-    addNewWeather( temp, feelsLike, humi, windSpeed, visi, wether, city);
+    addNewWeather( temp, feelsLike, humi, windSpeed, visi, wether, city, id);
 };
 
-const getLocation = async (city) => {
+const getLocation = async (city, id) => {
     const APIkey = `b48f8d17db2c7e8becb6cc27a2e1c362`;
     const url = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${APIkey}`;
     const respons = await fetch (url);
     const result = await respons.json();
     const lon = result[0].lon;
     const lat = result[0].lat;
-    getWeather(lon, lat, city);
+    getWeather(lon, lat, city, id);
 }
 
 $(`.add-weather`).click( () => {
@@ -101,6 +118,33 @@ $(`#close-btn`).click( () => {
 $(`#add-w-btn`).click( (e) => {
     e.preventDefault();
     let value = $(`.select-option`).val();
-    getLocation(value);
+    const id = Math.round(Math.random() * 100000);
+    addStorage(id, value);
+    getLocation(value, id);
     $(`.modal-box`).hide();
 });
+
+
+const addStorage = (id, city) => {
+    let data = localStorage.getItem(`weather-list`);
+    data = JSON.parse(data);
+        const list = { id: id, city: city};
+    if(data !== null){
+        data.push(list);
+    } else {
+        data = [ list ];
+    }
+    localStorage.setItem(`weather-list`, JSON.stringify(data));
+};
+
+const getStorage = () => {
+    let data = localStorage.getItem(`weather-list`);
+    data = JSON.parse(data);
+    if(data !== null){
+        for(let i = 0; i < data.length; i++){
+            getLocation(data[i].city, data[i].id);
+        }
+    }
+}
+
+getStorage();
