@@ -6,15 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>weather-app</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
 
 
 <div class="main">
     <header class="top-header">
-        weather App / Git hub about
+        weather App
     </header>
     <section class="content">
+        <!--
         <div class="weather-box">
             <header class="weather-header">
                 <div class="wh-left">
@@ -26,7 +28,7 @@
                 </div>
             </header>
             <section class="weather-section">
-                <h1>15<small>oC</small></h1>
+                <h1>15<sup>C</sup></h1>
                 <p>Mostly cloudy</p>
             </section>
             <footer class="weather-footer">
@@ -36,8 +38,8 @@
                 <div>wind 10km</div>
             </footer>
         </div>
-
-        <div class="weather-box">
+-->
+        <div class="weather-box add-weather">
             <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
                     <button class="circale">+</button>
                 <h3>Add new location</h3>
@@ -48,7 +50,21 @@
 </div>
 
 
-
+<div class="modal-box">
+    <span class="material-symbols-outlined" id="close-btn">
+        close
+    </span>
+        <form>
+            <select class="select-option">
+                <option>London</option>
+                <option>Tbilis</option>
+                <option>New York</option>
+                <option>Paris</option>
+                <option>Milan</option>
+            </select>
+            <button id="add-w-btn">Add</button>
+        </form>
+</div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>    
     <script src="script.js"></script>
