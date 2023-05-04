@@ -42,8 +42,12 @@ body {
 }
 
 .weather-box {
+    /*
     min-width: 320px;
     min-height: 400px;
+    */
+    width: calc(80% / 3);
+    height: calc(100vh / 2 + 50px);
     background: rgba(0, 0, 0, 0.26);
     backdrop-filter: blur(16px);
     border-radius: 48px;
@@ -181,4 +185,29 @@ body {
     position: absolute;
     right: 10px;
     top: 10px;
+}
+
+.option-modal {
+    position: absolute;
+    top: 40px;
+    right: 5px;
+    background-color: #ffffff;
+    padding: 10px !important;
+    border-radius: 5px;
+    border: 1px solid #462686;
+    display: none;
+}
+
+.option-modal button {
+    background-color: #A4A4FF;
+    border: none;
+    color: #462686;
+    padding: 5px;
+    transition: 0.3s;
+}
+
+
+.option-modal button:active {
+    background-color: #462686;
+    color: #ffffff;
 }

@@ -17,14 +17,19 @@ const addNewWeather = (temp, feelsLike, humi, windSpeed, visi, wether, city) => 
          icon = `<img src="./icons/cloudy.png" />`;
     }
 
+    const id = Math.round(Math.random() * 100000);
+
 
     const div = `
     <div class="weather-box">
-    <button class="options-btn">
+    <button class="options-btn btn${id}">
         <span class="material-symbols-outlined">
         more_vert
         </span>
     </button>
+    <div class="option-modal modal${id}">
+    <button class="remove-box">Remove</button>
+    </div>
     <header class="weather-header">
         <div class="wh-left">
             ${icon}
@@ -48,6 +53,16 @@ const addNewWeather = (temp, feelsLike, humi, windSpeed, visi, wether, city) => 
     `;
 
     $(`.add-weather`).before(div);
+
+    $(`.btn${id}`).click( (event) => {
+        $(`.modal${id}`).toggle();
+        const parent = event.currentTarget.parentElement;
+        $(`.remove-box`).click( () => {
+            parent.remove();
+        })
+       
+    });
+    
 };
 
 
