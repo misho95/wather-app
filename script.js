@@ -7,6 +7,7 @@ const addNewWeather = (temp, feelsLike, humi, windSpeed, visi, wether, city) => 
 
     const fullDate = `${day[d.getDay()]} ,  ${d.getFullYear()} / ${d.getMonth()} / ${d.getDay()}`;
 
+    const tempToCels = Math.round((temp - 32) * 0.5556);
 
     let icon;
 
@@ -34,7 +35,7 @@ const addNewWeather = (temp, feelsLike, humi, windSpeed, visi, wether, city) => 
         </div>
     </header>
     <section class="weather-section">
-        <h1>${temp}<sup>C</sup></h1>
+        <h1>${tempToCels}<sup>C</sup></h1>
         <p>Mostly ${wether}</p>
     </section>
     <footer class="weather-footer">
@@ -61,7 +62,7 @@ const getWeather = async (lon, lat, city) => {
     const windSpeed = result.wind.speed;
     const visi = result.visibility;
     const wether = result.weather[0].main;
-    addNewWeather( temp, feelsLike, humi, windSpeed, visi, wether,city);
+    addNewWeather( temp, feelsLike, humi, windSpeed, visi, wether, city);
 };
 
 const getLocation = async (city) => {
