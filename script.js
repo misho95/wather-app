@@ -7,7 +7,15 @@ const addNewWeather = (temp, feelsLike, humi, windSpeed, visi, wether, city) => 
 
     const fullDate = `${day[d.getDay()]} ,  ${d.getFullYear()} / ${d.getMonth()} / ${d.getDay()}`;
 
-    const icon = `<img src="./icons/sun.png" />`;
+
+    let icon;
+
+    if(wether === `Clear`) {
+         icon = `<img src="./icons/sun.png" />`;
+    } else if (wether === `Clouds`){
+         icon = `<img src="./icons/cloudy.png" />`;
+    }
+
 
     const div = `
     <div class="weather-box">
