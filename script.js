@@ -7,7 +7,7 @@ const addNewWeather = (temp, feelsLike, humi, windSpeed, visi, wether, city, id)
 
     const fullDate = `${day[d.getDay()]} ,  ${d.getFullYear()} / ${d.getMonth()} / ${d.getDay()}`;
 
-    const tempToCels = Math.round(temp / 10);
+    const tempToCels = Math.round(temp) /10;
 
     let icon;
 
@@ -17,6 +17,8 @@ const addNewWeather = (temp, feelsLike, humi, windSpeed, visi, wether, city, id)
          icon = `<img src="./icons/cloudy.png" />`;
     } else if(wether === `Rain`){
         icon = `<img src="./icons/rain.png" />`;
+    } else if(wether === `Fog`){
+        icon = `<img src="./icons/fog.png" />`;
     }
 
     const div = `

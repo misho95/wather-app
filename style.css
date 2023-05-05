@@ -45,9 +45,13 @@ body {
     /*
     min-width: 320px;
     min-height: 400px;
-    */
+    
     width: calc(80% / 3);
     height: calc(100vh / 2 + 50px);
+    */
+    width: 320px;
+    height: auto;
+    min-height: 400px;
     background: rgba(0, 0, 0, 0.26);
     backdrop-filter: blur(16px);
     border-radius: 48px;
@@ -55,6 +59,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding: 10px;
 }
 
 @media (max-width: 500px) {
